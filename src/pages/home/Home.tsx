@@ -14,7 +14,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex justify-center ">
+          <div className="flex justify-center py-24">
             <img
               src="https://i.imgur.com/fyfri1v.png"
               alt="Imagem Página Home"
