@@ -1,7 +1,7 @@
 function Navbar() {
   return (
     <>
-      <div className="w-full flex justify-center py-4 bg-white text-purple-900">
+      <div className="w-full fixed top-0 flex justify-center py-4 bg-white text-purple-900 shadow-b">
         <div className="w-full flex justify-between text-lg px-4">
           Blog Pessoal
           <ul className="flex gap-4 font-bold">

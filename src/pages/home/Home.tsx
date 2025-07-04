@@ -8,7 +8,7 @@ function Home() {
             <p className="text-xl">Expresse aqui seus pensamentos e opniões</p>
 
             <div className="flex justify-around gap-4">
-              <div className="rounded text-white border-white border-solid border-2 py-2 px-4">
+              <div className="rounded text-white border-white border-solid border-2 hover:border-transparent py-2 px-4 transition-colors cursor-pointer hover:text-purple-700 hover:font-bold hover:bg-purple-100">
                 Nova Postagem
               </div>
             </div>
