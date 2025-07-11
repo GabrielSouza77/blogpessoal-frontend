@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="w-screen min-h-screen bg-indigo-900 flex justify-center">
@@ -8,9 +12,12 @@ function Home() {
             <p className="text-xl">Expresse aqui seus pensamentos e opniões</p>
 
             <div className="flex justify-around gap-4">
-              <div className="rounded text-white border-white border-solid border-2 hover:border-transparent py-2 px-4 transition-colors cursor-pointer hover:text-purple-700 hover:font-bold hover:bg-purple-100">
+              <button
+                onClick={() => navigate("/cadastrarpostagem")}
+                className="rounded text-white border-white border-solid border-2 hover:border-transparent py-2 px-4 transition-colors cursor-pointer hover:text-purple-700 hover:font-bold hover:bg-purple-100"
+              >
                 Nova Postagem
-              </div>
+              </button>
             </div>
           </div>
 

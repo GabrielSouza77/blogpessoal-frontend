@@ -1,26 +1,26 @@
 import { useNavigate } from "react-router-dom";
-import CardTemas from "../cardtemas/CardTemas";
+import CardPostagens from "../cardpostagens/CardPostagens";
 import { useContext, useEffect, useState } from "react";
-import type Tema from "../../../models/Tema";
+import type Postagem from "../../../models/Postagem";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { HashLoader } from "react-spinners";
 
-function ListaTemas() {
+function ListarPostagens() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [temas, setTemas] = useState<Tema[]>([]);
+  const [postagens, setPostagens] = useState<Postagem[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
-  async function buscarTemas() {
+  async function buscarPostagens() {
     try {
       setIsLoading(true);
 
-      await buscar("/temas", setTemas, {
+      await buscar("/postagens", setPostagens, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -39,8 +39,9 @@ function ListaTemas() {
   }, [token]);
 
   useEffect(() => {
-    buscarTemas();
-  }, [temas.length]);
+    buscarPostagens();
+    console.log(postagens);
+  }, [postagens.length]);
 
   return (
     <>
@@ -52,14 +53,18 @@ function ListaTemas() {
       {!isLoading && (
         <div className="flex items-center justify-center min-h-[calc(100vh-64px-64px)] w-full my-4">
           <div className="w-full max-w-6xl px-4">
-            {temas.length === 0 && (
+            {postagens.length === 0 && (
               <span className="text-3xl text-center my-8 block">
-                Nenhum Tema foi encontrado!
+                Nenhuma Postagem foi encontrada!
               </span>
             )}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {temas.map((tema) => (
-                <CardTemas key={tema.id} tema={tema} />
+              {postagens.map((postagem) => (
+                <CardPostagens
+                  key={postagem.id}
+                  postagem={postagem}
+                  usuario={usuario}
+                />
               ))}
             </div>
           </div>
@@ -68,4 +73,5 @@ function ListaTemas() {
     </>
   );
 }
-export default ListaTemas;
+
+export default ListarPostagens;

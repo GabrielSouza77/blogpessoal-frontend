@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-full fixed top-0 flex justify-center py-4 bg-white text-purple-900 shadow-md">
         <div className="w-full flex justify-between text-lg px-4">
-          Blog Pessoal
+          <div
+            className="cursor-pointer hover:text-purple-700 transition-colors"
+            onClick={() => navigate("/home")}
+          >
+            Blog Pessoal
+          </div>
           <ul className="flex gap-4 font-bold">
             <li>
               <Link
