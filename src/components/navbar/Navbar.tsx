@@ -1,7 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
+  const { handleLogout } = useContext(AuthContext);
+
+  const handleSair = () => {
+    handleLogout();
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="w-full fixed top-0 flex justify-center py-4 bg-white text-purple-900 shadow-md">
@@ -48,6 +57,7 @@ function Navbar() {
             <li>
               <Link
                 to="/login"
+                onClick={handleSair}
                 className="hover:text-red-600 transition-colors cursor-pointer px-2 py-1 rounded hover:bg-red-100"
               >
                 Sair
